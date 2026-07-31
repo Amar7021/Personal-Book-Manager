@@ -1,0 +1,20 @@
+{
+  "name": "book-manager-server",
+  "version": "1.0.0",
+  "description": "A personal book management API built with Express.js to manage books.",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "mongoose": "^9.9.0",
+    "nodemon": "^3.1.14"
+  }
+}
