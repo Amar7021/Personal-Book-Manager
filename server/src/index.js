@@ -16,6 +16,7 @@ app.use(
   cors({
     origin: process.env.CORS_ORIGIN,
     credentials: true,
+    methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
   }),
 );
 
@@ -36,4 +37,4 @@ connectToDB()
 
 // routes
 app.use("/api/v1/auth", userRouter);
-app.use("/api/v1", bookRouter);
+app.use("/api/v1/book", bookRouter);

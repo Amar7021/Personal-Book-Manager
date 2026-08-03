@@ -40,16 +40,7 @@ export default function LoginPage() {
     reValidateMode: "onChange",
   });
 
-  const { mutate, isPending } = useLogin({
-    onSuccess: (data) => {
-      dispatch(setUser(data.user));
-      toast.success(data.message);
-      router.replace("/dashboard");
-    },
-    onError: (error) => {
-      toast.error(error.response?.data?.message || "Login failed");
-    },
-  });
+  const { mutate, isPending } = useLogin(dispatch, setUser, router);
   const onSubmit = (values) => {
     console.log({ values });
     mutate(values);

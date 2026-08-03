@@ -43,17 +43,7 @@ export default function RegisterPage() {
     reValidateMode: "onChange",
   });
 
-  const { mutate, isPending } = useRegister({
-    onSuccess: (data) => {
-      dispatch(setUser(data.user));
-      toast.success(data.message);
-      router.replace("/dashboard");
-    },
-
-    onError: (error) => {
-      toast.error(error.response?.data?.message || "Registration failed");
-    },
-  });
+  const { mutate, isPending } = useRegister(dispatch, setUser, router);
 
   const onSubmit = ({ confirmPassword, ...values }) => {
     mutate(values);

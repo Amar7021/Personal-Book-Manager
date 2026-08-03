@@ -7,31 +7,59 @@ import {
   logout,
   register,
 } from "@/services/auth.service";
+import { toast } from "sonner";
 
-export const useLogin = (options = {}) => {
+export const useLogin = (dispatch, setUser, router) => {
   return useMutation({
     mutationFn: login,
-    ...options,
+    onSuccess: (data) => {
+      console.log({ data })
+      if (data.success) {
+        dispatch(setUser(data.user));
+        toast.success(data.message);
+        router.replace("/dashboard");
+      }
+    },
+    onError: (error) => {
+      toast.error(error.response?.data?.message || "Login failed");
+    },
   });
 };
-export const useRegister = (options = {}) => {
+export const useRegister = (dispatch, setUser, router) => {
   return useMutation({
     mutationFn: register,
-    ...options,
+    onSuccess: (data) => {
+      if (data.success) {
+        dispatch(setUser(data.user));
+        toast.success(data.message);
+        router.replace("/dashboard");
+      }
+    },
+    onError: (error) => {
+      toast.error(error.response?.data?.message || "Registration failed");
+    },
   });
 };
 export const useCurrentUser = () => {
   return useQuery({
     queryKey: ["current-user"],
     queryFn: getCurrentUser,
-    staleTime: Infinity,
     retry: false,
   });
 };
 
-export const useLogout = (options = {}) => {
+export const useLogout = (dispatch, clearUser, router) => {
   return useMutation({
     mutationFn: logout,
-    ...options,
+    onSuccess: (data) => {
+      if (data.success) {
+        dispatch(clearUser());
+        toast.success(data.message);
+        router.replace("/login");
+      }
+    },
+    onError: (error) => {
+      toast.error(error.response?.data?.message);
+    }
   });
 };

@@ -4,8 +4,8 @@ export const loginSchema = yup.object({
   email: yup.string().email("Invalid email").required("Email is required"),
   password: yup
     .string()
+    .required("Password is required")
     .min(8, "Password must be at least 8 characters")
-    .required("Password is required"),
 });
 
 export const registerSchema = yup.object({
@@ -21,8 +21,8 @@ export const registerSchema = yup.object({
     .required("Email is required"),
   password: yup
     .string()
-    .min(8, "Password must be at least 8 characters")
-    .required("Password is required"),
+    .required("Password is required")
+    .min(8, "Password must be at least 8 characters"),
   confirmPassword: yup
     .string()
     .required("Confirm your password")
