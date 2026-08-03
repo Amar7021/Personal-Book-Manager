@@ -38,7 +38,7 @@ export const registerUser = async (req, res) => {
       httpOnly: true,
       // secure: process.env.NODE_ENV === "production",
       secure: true,
-      // sameSite: "none",
+      sameSite: "none",
       maxAge: 30 * 24 * 60 * 60 * 1000, //30
     };
 
@@ -88,7 +88,7 @@ export const loginUser = async (req, res) => {
       httpOnly: true,
       // secure: process.env.NODE_ENV === "production",
       secure: true,
-      // sameSite: "none",
+      sameSite: "none",
       maxAge: 24 * 60 * 60 * 1000,
     };
 
@@ -119,7 +119,7 @@ export const logoutUser = async (req, res) => {
       .clearCookie("accessToken", {
         httpOnly: true,
         secure: true,
-        // sameSite: "none",
+        sameSite: "none",
       })
       .json({
         success: true,
