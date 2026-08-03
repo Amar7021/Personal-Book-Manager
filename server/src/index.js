@@ -18,6 +18,7 @@ app.use(
     origin: process.env.CORS_ORIGIN,
     credentials: true,
     methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
+    exposedHeaders: ["set-cookie"],
   }),
 );
 
@@ -36,7 +37,7 @@ connectToDB()
 
 // routes
 app.get("/", (req, res) => {
-  res.send("Hello Express Server!!")
-})
+  res.send("Hello Express Server!!");
+});
 app.use("/api/v1/auth", userRouter);
 app.use("/api/v1/book", bookRouter);
