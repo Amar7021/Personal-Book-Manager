@@ -12,10 +12,12 @@ const Providers = ({ children }) => {
         defaultOptions: {
           queries: {
             retry: 1,
-            staleTime: 1000 * 60 * 5,
+            staleTime: 10000,
             refetchOnWindowFocus: false,
+            refetchOnReconnect: false,
+            gcTime: 5 * 60 * 1000,
           },
-        },
+        }
       }),
   );
 

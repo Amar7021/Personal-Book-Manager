@@ -1,9 +1,10 @@
 import api from "@/lib/api";
 
-export const getBooks = async (params) => {
+export const getBooks = async ({ signal, ...params }) => {
     console.log("Fetching books...");
     const { data } = await api.get("/book/get-all", {
         params,
+        signal
     });
     return data;
 };

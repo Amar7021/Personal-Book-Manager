@@ -8,7 +8,7 @@ export const useBooks = (params) => {
     console.log({ params })
     return useQuery({
         queryKey: ["books", params],
-        queryFn: () => getBooks(params),
+        queryFn: ({ signal }) => getBooks({ signal, ...params }),
     });
 };
 

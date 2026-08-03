@@ -13,6 +13,7 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { useUpdateBook } from "@/hooks/book";
+import { formatDistanceToNow } from "date-fns";
 
 export default function BookCard({
     book,
@@ -79,23 +80,30 @@ export default function BookCard({
                     </SelectContent>
                 </Select>
             </div>
-            <div className="mt-6 flex justify-end gap-2">
-                <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => onEdit(book)}
-                >
-                    <Pencil className="mr-2 size-4" />
-                    Edit
-                </Button>
-                <Button
-                    variant="destructive"
-                    size="sm"
-                    onClick={() => onDelete(book)}
-                >
-                    <Trash2 className="mr-2 size-4" />
-                    Delete
-                </Button>
+            <div className="mt-6 flex justify-between items-center gap-2">
+                <p className="text-sm text-muted-foreground">
+                    Added {formatDistanceToNow(new Date(book.createdAt), {
+                        addSuffix: true,
+                    })}
+                </p>
+                <div className="flex gap-2">
+                    <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => onEdit(book)}
+                    >
+                        <Pencil className="mr-2 size-4" />
+                        Edit
+                    </Button>
+                    <Button
+                        variant="destructive"
+                        size="sm"
+                        onClick={() => onDelete(book)}
+                    >
+                        <Trash2 className="mr-2 size-4" />
+                        Delete
+                    </Button>
+                </div>
             </div>
         </motion.div>
     );
