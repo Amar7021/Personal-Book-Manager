@@ -36,5 +36,8 @@ connectToDB()
   });
 
 // routes
+app.get("/", (req, res) => {
+  res.send("Hello Express Server!!")
+})
 app.use("/api/v1/auth", userRouter);
 app.use("/api/v1/book", bookRouter);

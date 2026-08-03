@@ -36,8 +36,9 @@ export const registerUser = async (req, res) => {
     delete userResponse.password;
     const cookieOptions = {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
+      // secure: process.env.NODE_ENV === "production",
+      secure: true,
+      sameSite: "none",
       maxAge: 30 * 24 * 60 * 60 * 1000, //30
     };
 
@@ -85,8 +86,9 @@ export const loginUser = async (req, res) => {
     const accessToken = user.generateAccessToken();
     const cookieOptions = {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
+      // secure: process.env.NODE_ENV === "production",
+      secure: true,
+      sameSite: "none",
       maxAge: 24 * 60 * 60 * 1000,
     };
 
@@ -116,8 +118,8 @@ export const logoutUser = async (req, res) => {
       .status(200)
       .clearCookie("accessToken", {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "strict",
+        secure: true,
+        sameSite: "none",
       })
       .json({
         success: true,
