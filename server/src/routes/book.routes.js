@@ -1,15 +1,21 @@
-import express from "express"
-import { createBook, getBookById, updateBook, deleteBook, getAllUsersBooks } from "../controllers/book.controllers..js"
-import { authMiddleware } from "../middlewares/auth.middleware.js"
+import express from "express";
+import {
+  createBook,
+  getBookById,
+  updateBook,
+  deleteBook,
+  getAllUsersBooks,
+} from "../controllers/book.controllers..js";
+import { authMiddleware } from "../middlewares/auth.middleware.js";
 
-const bookRouter = express.Router()
+const router = express.Router();
 
-bookRouter.use(authMiddleware)
+router.use(authMiddleware);
 
-bookRouter.route("/create").post(createBook)
-bookRouter.route("/get-all").get(getAllUsersBooks)
-bookRouter.route("/get-single/:id").post(getBookById)
-bookRouter.route("/update/:id").patch(updateBook)
-bookRouter.route("/delete/:id").delete(deleteBook)
+router.route("/create").post(createBook);
+router.route("/get-all").get(getAllUsersBooks);
+router.route("/get-single/:id").get(getBookById);
+router.route("/update/:id").put(updateBook);
+router.route("/delete/:id").delete(deleteBook);
 
-export default bookRouter
+export default router;

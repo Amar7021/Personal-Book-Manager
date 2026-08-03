@@ -3,6 +3,7 @@ import UserModel from "../models/user.model.js";
 
 export const authMiddleware = async (req, res, next) => {
     try {
+        console.log(req.method, req.originalUrl);
         // token getting from cookie
         const token = req.cookies?.accessToken
         if (!token) {

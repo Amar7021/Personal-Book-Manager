@@ -127,6 +127,7 @@ export const getBookById = async (req, res) => {
 export const updateBook = async (req, res) => {
     try {
         const { id } = req.params
+
         const allowedFields = [
             "title",
             "author",
@@ -150,6 +151,7 @@ export const updateBook = async (req, res) => {
                 runValidators: true,
             }
         )
+        console.log("check", updatedBook, id);
         if (!updatedBook) {
             return res.status(404).json({
                 success: false,
