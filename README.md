@@ -12,7 +12,7 @@ The application allows users to manage their personal book collection with authe
 
 ## 🎨 Design Inspiration
 
-The UI design is inspired by publicly available designs on **Dribbble**. The implementation, codebase, and application logic were developed independently for learning and portfolio purposes. Also, ChatGPT used to create this README.md and official docs for code references.
+The UI design is inspired by publicly available designs on **Dribbble**. The implementation, codebase, and application logic were developed independently for learning and portfolio purposes.
 
 ## ✨ Features
 
@@ -92,7 +92,7 @@ npm install
 ## Install Backend
 
 ```bash
-cd ../server
+cd server
 npm install
 ```
 
@@ -109,6 +109,12 @@ MONGO_URI=mongo_db_atlas_string
 
 ACCESS_TOKEN_SECRET=your string
 ACCESS_TOKEN_EXPIRY=30d  // enter days or hours
+```
+
+Create a `.env` file inside the client directory.
+
+```env
+NEXT_PUBLIC_API_URL=YOUR-BACKEND-URL // example: http://localhost:5000
 ```
 
 ---
